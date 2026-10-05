@@ -8,7 +8,18 @@ SPAM_WORDS = ["скидка", "бесплатно", "выигрыш", "клик�
 
 def main():
     # Ваш код здесь
-    pass
+    text = input("Введите ваше сообщениие: ")
+
+    moderated_res = su.moderate_message(text, SPAM_WORDS)
+
+    if moderated_res["warnings"]:
+        print(moderated_res["warnings"])
+
+    if moderated_res["isValid"]:
+        print("Можно отправлять")
+    else:
+        print("Сообщение не прошло проверку")
+
 
 
 if __name__ == "__main__":
